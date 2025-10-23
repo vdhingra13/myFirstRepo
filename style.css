@@ -8,6 +8,32 @@
   --primary-ghost:#e2e8f0;
   --success:#059669;
   --border:#e5e7eb;
+
+  --code-bg:#1e1e1e;
+  --code-fg:#dcdcdc;
+  --code-border:#2d2d2d;
+  --ln-bg:#1b1b1b;
+  --ln-fg:#8a8a8a;
+
+  --kw:#569cd6;
+  --fn:#dcdcaa;
+  --num:#b5cea8;
+  --str:#ce9178;
+  --com:#6a9955;
+}
+
+.code-light{
+  --code-bg:#ffffff;
+  --code-fg:#2d2d2d;
+  --code-border:#e5e7eb;
+  --ln-bg:#f3f4f6;
+  --ln-fg:#6b7280;
+
+  --kw:#1d4ed8;
+  --fn:#7c3aed;
+  --num:#047857;
+  --str:#b45309;
+  --com:#64748b;
 }
 
 *{box-sizing:border-box}
@@ -62,14 +88,58 @@ body{
 }
 
 .question{font-size:1.1rem; margin:12px 0 8px}
-.code{
-  background:#0b1020;
-  color:#e6edf3;
-  padding:12px;
+
+.code-toolbar{
+  display:flex;
+  align-items:center;
+  gap:8px;
+  margin: 6px 0 6px;
+}
+.code-toolbar .spacer{flex:1}
+.chip{
+  border:1px solid var(--border);
+  background:#fff;
+  color:var(--text);
+  padding:6px 10px;
+  border-radius:999px;
+  cursor:pointer;
+  font-size:.9rem;
+}
+
+pre.code{
+  --pad: 12px;
+  background: var(--code-bg);
+  color: var(--code-fg);
+  border:1px solid var(--code-border);
   border-radius:12px;
   overflow:auto;
-  border:1px solid #111827;
+  line-height:1.5;
+  font-family: "Fira Code", ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+  font-size: 0.95rem;
+  padding: 0;
+  white-space: pre;
+  display:grid;
+  grid-template-columns: max-content 1fr;
 }
+pre.code .ln{
+  background: var(--ln-bg);
+  color: var(--ln-fg);
+  text-align:right;
+  padding: var(--pad);
+  user-select:none;
+}
+pre.code .ln div{ padding-right: 10px; }
+pre.code code{
+  display:block;
+  padding: var(--pad);
+  min-width:0;
+}
+
+pre.code .kw { color: var(--kw); }
+pre.code .fn { color: var(--fn); }
+pre.code .num{ color: var(--num); }
+pre.code .str{ color: var(--str); }
+pre.code .com{ color: var(--com); }
 
 .options{margin-top:12px; display:grid; gap:10px}
 .option{
@@ -95,6 +165,19 @@ body{
 .badge.ok{background:#ecfdf5; border-color:#10b981; color:#065f46}
 .badge.no{background:#fef2f2; border-color:#ef4444; color:#991b1b}
 
-.correct{font-weight:700}
-.user-ans{}
-.expl{margin-top:6px}
+.toast{
+  position: fixed;
+  left: 50%;
+  transform: translateX(-50%);
+  bottom: 24px;
+  background: rgba(17,24,39,.95);
+  color: #fff;
+  padding: 10px 14px;
+  border-radius: 10px;
+  font-size: 0.95rem;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity .25s ease;
+  z-index: 999;
+}
+.toast.show{ opacity: 1; }

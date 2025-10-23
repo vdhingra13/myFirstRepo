@@ -4,6 +4,9 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>C Concepts Assessment</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500;600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css"/>
 </head>
 <body>
@@ -25,7 +28,15 @@
         <div id="topic"></div>
       </div>
       <div id="question-text" class="question"></div>
-      <pre id="question-code" class="code hidden"></pre>
+
+      <div id="code-toolbar" class="code-toolbar hidden">
+        <button id="theme-toggle" class="chip" type="button" aria-label="Toggle code theme">🌙 Dark</button>
+        <div class="spacer"></div>
+        <button id="copy-btn" class="chip" type="button" aria-label="Copy code">📋 Copy</button>
+      </div>
+
+      <pre id="question-code" class="code hidden" aria-label="Question code block"></pre>
+
       <form id="options-form" class="options"></form>
       <div class="nav">
         <button id="prev-btn" class="btn" type="button">← Previous</button>
@@ -45,8 +56,11 @@
   </main>
 
   <footer class="app-footer">
-    <small>Built for quick sharing. Answers are kept server-side; client only sees questions.</small>
+    <small>© 2025 Vishal Dhingra • C Concepts Assessment</small><br/>
+    <small>Answers are kept server-side; client only sees questions.</small>
   </footer>
+
+  <div id="toast" class="toast" role="status" aria-live="polite"></div>
 
   <script src="script.js"></script>
 </body>
