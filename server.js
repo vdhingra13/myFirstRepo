@@ -1,7 +1,7 @@
 const express = require("express");
 const fs = require("fs");
 const path = require("path");
-const nodemailer = require("nodemailer");
+const https = require("https"); // ✅ used for Resend API
 
 const app = express();
 const PORT = process.env.PORT || 10000;
@@ -21,19 +21,51 @@ try {
   console.error("⚠️ Could not load questions.json:", err.message);
 }
 
-// Email setup
-let transporter = null;
-if (process.env.GMAIL_USER && process.env.GMAIL_PASS) {
-  transporter = nodemailer.createTransport({
-    service: "gmail",
-    auth: {
-      user: process.env.GMAIL_USER,
-      pass: process.env.GMAIL_PASS,
-    },
-  });
-  console.log("✅ Email service configured for", process.env.GMAIL_USER);
+// --- RESEND EMAIL SETUP ---
+const RESEND_API_KEY = process.env.RESEND_API_KEY;
+const ADMIN_EMAIL = process.env.ADMIN_EMAIL;
+if (RESEND_API_KEY) {
+  console.log(`✅ Resend email service configured → will send results to ${ADMIN_EMAIL}`);
 } else {
-  console.log("⚠️ GMAIL_USER / GMAIL_PASS not set; skipping email.");
+  console.log("⚠️ RESEND_API_KEY not set; skipping email.");
+}
+
+// Helper: send email using Resend API
+async function sendEmail(subject, body) {
+  if (!RESEND_API_KEY || !ADMIN_EMAIL) {
+    console.log("⚠️ Missing RESEND_API_KEY or ADMIN_EMAIL, skipping email.");
+    return;
+  }
+
+  const data = JSON.stringify({
+    from: "C Assessment <onboarding@resend.dev>",
+    to: [ADMIN_EMAIL],
+    subject,
+    text: body
+  });
+
+  const options = {
+    hostname: "api.resend.com",
+    path: "/emails",
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+      "Authorization": `Bearer ${RESEND_API_KEY}`,
+      "Content-Length": Buffer.byteLength(data)
+    }
+  };
+
+  const req = https.request(options, (res) => {
+    if (res.statusCode >= 200 && res.statusCode < 300) {
+      console.log("📧 Email sent successfully via Resend API");
+    } else {
+      console.error("❌ Email send failed with status:", res.statusCode);
+    }
+  });
+
+  req.on("error", (err) => console.error("❌ Email send failed:", err.message));
+  req.write(data);
+  req.end();
 }
 
 // --- ROUTES ---
@@ -74,21 +106,20 @@ app.post("/api/submit", (req, res) => {
 
   const percent = (score / questions.length) * 100;
 
-  // Send email to admin
-  if (transporter && process.env.ADMIN_EMAIL) {
-    const subject = `Assessment Result: ${score}/${questions.length} (${percent.toFixed(1)}%)`;
-    const summaryLines = detail
-      .map(
-        (d, i) =>
-          `Q${i + 1}. ${d.question}\nYour answer: ${d.user
-            .map((x) => d.options[x])
-            .join(", ") || "None"}\nCorrect answer: ${d.correct
-            .map((x) => d.options[x])
-            .join(", ")}\nResult: ${d.isCorrect ? "✅ Correct" : "❌ Incorrect"}\n`
-      )
-      .join("\n");
+  // Build email summary
+  const subject = `Assessment Result: ${score}/${questions.length} (${percent.toFixed(1)}%)`;
+  const summaryLines = detail
+    .map(
+      (d, i) =>
+        `Q${i + 1}. ${d.question}\nYour answer: ${d.user
+          .map((x) => d.options[x])
+          .join(", ") || "None"}\nCorrect answer: ${d.correct
+          .map((x) => d.options[x])
+          .join(", ")}\nResult: ${d.isCorrect ? "✅ Correct" : "❌ Incorrect"}\n`
+    )
+    .join("\n");
 
-    const body = `
+  const body = `
 Assessment completed:
 
 Score: ${score}/${questions.length} (${percent.toFixed(1)}%)
@@ -97,19 +128,8 @@ Detailed results:
 ${summaryLines}
 `;
 
-    transporter.sendMail(
-      {
-        from: process.env.GMAIL_USER,
-        to: process.env.ADMIN_EMAIL,
-        subject,
-        text: body,
-      },
-      (err, info) => {
-        if (err) console.error("❌ Email send failed:", err.message);
-        else console.log("📧 Email sent:", info.response);
-      }
-    );
-  }
+  // ✅ Send email via Resend
+  sendEmail(subject, body);
 
   res.json({ score, total: questions.length, percent, detail });
 });
