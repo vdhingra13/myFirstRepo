@@ -1,0 +1,512 @@
+[
+  {
+    "id": 1,
+    "topic": "Functions",
+    "text": "What will be the output of the following code?",
+    "code": "void printValue(int a) { a = 20; }\nint main(){ int x=10; printValue(x); printf(\"%d\", x);}",
+    "options": [
+      "10",
+      "20",
+      "Garbage value",
+      "Compile error"
+    ],
+    "correct": [
+      0
+    ],
+    "explanation": "C passes arguments by value; changes to 'a' inside printValue do not affect x.",
+    "multiple": false
+  },
+  {
+    "id": 2,
+    "topic": "Functions",
+    "text": "What is true about function declaration and definition?",
+    "code": "",
+    "options": [
+      "Both must always be in the same file",
+      "Declaration tells the compiler what the function looks like",
+      "Definition can exist without declaration",
+      "Function call must appear before declaration"
+    ],
+    "correct": [
+      1
+    ],
+    "explanation": "A declaration (prototype) informs the compiler of the function's signature; the definition provides the body.",
+    "multiple": false
+  },
+  {
+    "id": 3,
+    "topic": "Functions",
+    "text": "Identify the type correctly for: int (*fptr)(int, int);",
+    "code": "",
+    "options": [
+      "Pointer to int",
+      "Function returning pointer to int",
+      "Function pointer returning int",
+      "Pointer to function returning int"
+    ],
+    "correct": [
+      3
+    ],
+    "explanation": "fptr is a pointer to a function taking two ints and returning int.",
+    "multiple": false
+  },
+  {
+    "id": 4,
+    "topic": "Functions",
+    "text": "In C, parameters are passed to functions by:",
+    "code": "",
+    "options": [
+      "Value",
+      "Reference",
+      "Address only",
+      "Both value and reference"
+    ],
+    "correct": [
+      0
+    ],
+    "explanation": "C uses pass-by-value. You can simulate pass-by-reference via pointers.",
+    "multiple": false
+  },
+  {
+    "id": 5,
+    "topic": "Functions",
+    "text": "Which of the following is a correct function prototype?",
+    "code": "",
+    "options": [
+      "int sum(a, b);",
+      "sum(int, int);",
+      "int sum(int a, int b);",
+      "function sum(int a, int b);"
+    ],
+    "correct": [
+      2
+    ],
+    "explanation": "Return type and parameter types must be specified for a valid prototype.",
+    "multiple": false
+  },
+  {
+    "id": 6,
+    "topic": "Functions",
+    "text": "What is the output of this program?",
+    "code": "void update(int *p){ *p = *p + 5; }\nint main(){int x=10; update(&x); printf(\"%d\", x);}",
+    "options": [
+      "10",
+      "15",
+      "Garbage",
+      "Compile error"
+    ],
+    "correct": [
+      1
+    ],
+    "explanation": "Passing &x allows update() to modify x via the pointer.",
+    "multiple": false
+  },
+  {
+    "id": 7,
+    "topic": "Functions",
+    "text": "Which statement is true about recursion?",
+    "code": "",
+    "options": [
+      "Every recursive function must have at least one base condition",
+      "Recursive functions always run faster",
+      "Recursive functions cannot return values",
+      "Recursion cannot use global variables"
+    ],
+    "correct": [
+      0
+    ],
+    "explanation": "A base condition is required to prevent infinite recursion.",
+    "multiple": false
+  },
+  {
+    "id": 8,
+    "topic": "Functions",
+    "text": "What happens if a function is called before being declared (prototype missing)?",
+    "code": "",
+    "options": [
+      "Compiler error",
+      "Implicit declaration in older C standards",
+      "Undefined behavior",
+      "Both B and C"
+    ],
+    "correct": [
+      3
+    ],
+    "explanation": "Modern compilers error; older C assumed implicit int causing UB if mismatched.",
+    "multiple": false
+  },
+  {
+    "id": 9,
+    "topic": "Functions",
+    "text": "Which is a correct declaration of a pointer to a function returning void and taking an int?",
+    "code": "",
+    "options": [
+      "void *f(int);",
+      "void (*f)(int);",
+      "(*void f)(int);",
+      "void (f*)(int);"
+    ],
+    "correct": [
+      1
+    ],
+    "explanation": "Parentheses around *f indicate 'f' is a pointer to a function.",
+    "multiple": false
+  },
+  {
+    "id": 10,
+    "topic": "Functions",
+    "text": "What will be the output?",
+    "code": "void fun(int *p){ *p = 30; }\nint main(){ int x=10; fun(&x); printf(\"%d\", x);}",
+    "options": [
+      "10",
+      "30",
+      "0",
+      "Garbage"
+    ],
+    "correct": [
+      1
+    ],
+    "explanation": "fun receives &x, so it writes 30 into x.",
+    "multiple": false
+  },
+  {
+    "id": 11,
+    "topic": "Arrays",
+    "text": "What is the behavior of printf(\"%d\", arr[3]) given int arr[3]={1,2,3}; ?",
+    "code": "",
+    "options": [
+      "3",
+      "0",
+      "Undefined behavior",
+      "Compile error"
+    ],
+    "correct": [
+      2
+    ],
+    "explanation": "Index 3 is out of bounds for length 3 (valid 0..2).",
+    "multiple": false
+  },
+  {
+    "id": 12,
+    "topic": "Arrays",
+    "text": "Evaluate: printf(\"%d\", *(*(a+1))) for int a[2][2]={{1,2},{3,4}};",
+    "code": "",
+    "options": [
+      "1",
+      "2",
+      "3",
+      "4"
+    ],
+    "correct": [
+      2
+    ],
+    "explanation": "*(a+1) points to 2nd row; dereference yields first element 3.",
+    "multiple": false
+  },
+  {
+    "id": 13,
+    "topic": "Arrays",
+    "text": "How are array elements stored in memory?",
+    "code": "",
+    "options": [
+      "Random chunks",
+      "Contiguous blocks",
+      "Linked nodes",
+      "None of these"
+    ],
+    "correct": [
+      1
+    ],
+    "explanation": "C arrays occupy contiguous memory addresses.",
+    "multiple": false
+  },
+  {
+    "id": 14,
+    "topic": "Arrays",
+    "text": "What is wrong with 'int arr[];' ?",
+    "code": "",
+    "options": [
+      "Nothing",
+      "Array size missing",
+      "Array type missing",
+      "Array name missing"
+    ],
+    "correct": [
+      1
+    ],
+    "explanation": "An uninitialized array declaration must include a size.",
+    "multiple": false
+  },
+  {
+    "id": 15,
+    "topic": "Arrays",
+    "text": "Which correctly declares a string for \"Hello\"?",
+    "code": "",
+    "options": [
+      "char s[5] = \"Hello\";",
+      "char s[] = \"Hello\";",
+      "char s[6] = \"Hello\";",
+      "Both B and C"
+    ],
+    "correct": [
+      3
+    ],
+    "explanation": "Needs 6 bytes including null terminator; or omit size and let compiler infer.",
+    "multiple": false
+  },
+  {
+    "id": 16,
+    "topic": "Arrays",
+    "text": "What will be printed by *(str+2) if char str[]=\"C Language\"; ?",
+    "code": "",
+    "options": [
+      "C",
+      "L",
+      "Space",
+      "a"
+    ],
+    "correct": [
+      2
+    ],
+    "explanation": "Index 2 in \"C Language\" is the space character.",
+    "multiple": false
+  },
+  {
+    "id": 17,
+    "topic": "Arrays",
+    "text": "Value of arr[1][2] for int arr[2][3]={{1,2,3},{4,5,6}};",
+    "code": "",
+    "options": [
+      "3",
+      "4",
+      "5",
+      "6"
+    ],
+    "correct": [
+      3
+    ],
+    "explanation": "Row 1 (second row), column 2 \u2192 6.",
+    "multiple": false
+  },
+  {
+    "id": 18,
+    "topic": "Arrays",
+    "text": "What is sizeof(\"Hello\") in C?",
+    "code": "",
+    "options": [
+      "5",
+      "6",
+      "4",
+      "Undefined"
+    ],
+    "correct": [
+      1
+    ],
+    "explanation": "Includes the null terminator, hence 6.",
+    "multiple": false
+  },
+  {
+    "id": 19,
+    "topic": "Arrays",
+    "text": "Evaluate *(a+3) for int a[5]={1,2,3,4,5};",
+    "code": "",
+    "options": [
+      "3",
+      "4",
+      "2",
+      "5"
+    ],
+    "correct": [
+      1
+    ],
+    "explanation": "a+3 points at a[3] which is 4.",
+    "multiple": false
+  },
+  {
+    "id": 20,
+    "topic": "Arrays",
+    "text": "What is printed by 'printf(\"%d\", s1==s2);' for two arrays char s1[]=\"abc\", s2[]=\"abc\"; ?",
+    "code": "",
+    "options": [
+      "1",
+      "0",
+      "Compiler error",
+      "Undefined behavior"
+    ],
+    "correct": [
+      1
+    ],
+    "explanation": "Different arrays have different base addresses; pointer comparison is false.",
+    "multiple": false
+  },
+  {
+    "id": 21,
+    "topic": "Pointers",
+    "text": "What does printf(\"%d\", *p) print for int a=10; int *p=&a; ?",
+    "code": "",
+    "options": [
+      "10",
+      "Address of a",
+      "Garbage",
+      "Compile error"
+    ],
+    "correct": [
+      0
+    ],
+    "explanation": "Dereferencing p gives the value stored at &a, which is 10.",
+    "multiple": false
+  },
+  {
+    "id": 22,
+    "topic": "Pointers",
+    "text": "Given int a=5,b=6; int *p=&a,*q=&b; p=q; printf(\"%d\", *p);",
+    "code": "",
+    "options": [
+      "5",
+      "6",
+      "Garbage",
+      "Error"
+    ],
+    "correct": [
+      1
+    ],
+    "explanation": "p now points to b, so *p is 6.",
+    "multiple": false
+  },
+  {
+    "id": 23,
+    "topic": "Pointers",
+    "text": "What is printed by *++p for int arr[]={10,20,30}; int *p=arr;",
+    "code": "",
+    "options": [
+      "10",
+      "20",
+      "30",
+      "Compile error"
+    ],
+    "correct": [
+      1
+    ],
+    "explanation": "++p moves to arr[1]; dereference yields 20.",
+    "multiple": false
+  },
+  {
+    "id": 24,
+    "topic": "Pointers",
+    "text": "What is printed by *p++ for int arr[]={1,2,3}; int *p=arr;",
+    "code": "",
+    "options": [
+      "1",
+      "2",
+      "3",
+      "Error"
+    ],
+    "correct": [
+      0
+    ],
+    "explanation": "Post-increment returns old pointer; dereference yields 1 and then p increments.",
+    "multiple": false
+  },
+  {
+    "id": 25,
+    "topic": "Pointers",
+    "text": "What is printed after 'p += 2' for int arr[]={1,2,3,4}; int *p=arr; printf(\"%d\", *p);",
+    "code": "",
+    "options": [
+      "1",
+      "2",
+      "3",
+      "4"
+    ],
+    "correct": [
+      2
+    ],
+    "explanation": "p now points at arr[2] which is 3.",
+    "multiple": false
+  },
+  {
+    "id": 26,
+    "topic": "Pointers",
+    "text": "What does **q print for int x=10; int *p=&x; int **q=&p;",
+    "code": "",
+    "options": [
+      "10",
+      "Address of x",
+      "Compile error",
+      "Undefined"
+    ],
+    "correct": [
+      0
+    ],
+    "explanation": "Double dereference reaches x's value 10.",
+    "multiple": false
+  },
+  {
+    "id": 27,
+    "topic": "Pointers",
+    "text": "Which declares an array of 10 int pointers?",
+    "code": "",
+    "options": [
+      "int *arr[10];",
+      "int arr*[10];",
+      "*int arr[10];",
+      "arr int*[10];"
+    ],
+    "correct": [
+      0
+    ],
+    "explanation": "int *arr[10] is 'array of 10 pointers to int'.",
+    "multiple": false
+  },
+  {
+    "id": 28,
+    "topic": "Pointers",
+    "text": "What is printed by (*p)[1] if int arr[3]={10,20,30}; int (*p)[3]=&arr;",
+    "code": "",
+    "options": [
+      "10",
+      "20",
+      "30",
+      "Error"
+    ],
+    "correct": [
+      1
+    ],
+    "explanation": "p is a pointer to array[3]; (*p)[1] is arr[1] which is 20.",
+    "multiple": false
+  },
+  {
+    "id": 29,
+    "topic": "Pointers",
+    "text": "What is printed by *p++ when int a=5, *p=&a;",
+    "code": "",
+    "options": [
+      "5",
+      "Address of a",
+      "Compile error",
+      "Undefined"
+    ],
+    "correct": [
+      0
+    ],
+    "explanation": "Uses value, then increments pointer (which becomes invalid to use afterward).",
+    "multiple": false
+  },
+  {
+    "id": 30,
+    "topic": "Pointers",
+    "text": "For two pointers p1=&a and p2=&b (same array), p2 - p1 gives:",
+    "code": "",
+    "options": [
+      "Difference in elements",
+      "Difference in bytes",
+      "10",
+      "Undefined"
+    ],
+    "correct": [
+      0
+    ],
+    "explanation": "Pointer subtraction is scaled by element size, yielding a count of elements apart.",
+    "multiple": false
+  }
+]

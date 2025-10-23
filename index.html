@@ -1,4 +1,53 @@
-<html>
-<h1>This is my first web page powered by Github pages</h1>
-Thanks GitHub!
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>C Concepts Assessment</title>
+  <link rel="stylesheet" href="style.css"/>
+</head>
+<body>
+  <header class="app-header">
+    <h1>🧠 C Concepts Assessment</h1>
+    <p class="subtitle">Topics: Functions, Arrays, Pointers • 30 Questions • ~20 mins</p>
+  </header>
+
+  <main id="app">
+    <section id="welcome-screen" class="card">
+      <h2>Welcome</h2>
+      <p>This assessment contains 30 multiple-choice questions (single or multiple select). Answers are graded on the server; explanations are shown after you submit.</p>
+      <button id="start-btn" class="btn primary">Start Assessment ▶</button>
+    </section>
+
+    <section id="quiz-screen" class="card hidden">
+      <div class="quiz-header">
+        <div id="progress">Question 1 of 30</div>
+        <div id="topic"></div>
+      </div>
+      <div id="question-text" class="question"></div>
+      <pre id="question-code" class="code hidden"></pre>
+      <form id="options-form" class="options"></form>
+      <div class="nav">
+        <button id="prev-btn" class="btn" type="button">← Previous</button>
+        <button id="next-btn" class="btn" type="button">Next →</button>
+        <button id="submit-btn" class="btn success hidden" type="button">Submit Test 🧾</button>
+      </div>
+    </section>
+
+    <section id="results-screen" class="card hidden">
+      <h2>Results</h2>
+      <div id="scoreline" class="scoreline"></div>
+      <div id="results-detail" class="results"></div>
+      <div class="nav">
+        <button id="retry-btn" class="btn">Retry</button>
+      </div>
+    </section>
+  </main>
+
+  <footer class="app-footer">
+    <small>Built for quick sharing. Answers are kept server-side; client only sees questions.</small>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
 </html>
