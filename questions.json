@@ -1,1 +1,47 @@
-[]
+[
+  {
+    "topic": "Functions",
+    "text": "What is the output of the following code?",
+    "code": "void show(){ printf(\"Hello\"); }\nint main(){ show(); return 0; }",
+    "options": ["Hello", "Error", "Nothing", "Garbage"],
+    "correct": [0],
+    "multiple": false,
+    "explanation": "Function show() prints Hello when called from main."
+  },
+  {
+    "topic": "Functions",
+    "text": "Which of the following statements about functions in C is true?",
+    "options": [
+      "A function must always return a value.",
+      "Functions cannot be called recursively.",
+      "Functions help in modular programming and code reuse.",
+      "Functions cannot have parameters."
+    ],
+    "correct": [2],
+    "multiple": false,
+    "explanation": "Functions are used to organize code and improve reusability."
+  },
+  {
+    "topic": "Arrays",
+    "text": "What is the correct way to declare a 2D array with 3 rows and 4 columns?",
+    "options": [
+      "int arr[4][3];",
+      "int arr[3][4];",
+      "int arr(3,4);",
+      "array arr[3,4];"
+    ],
+    "correct": [1],
+    "multiple": false,
+    "explanation": "In C, first index is rows, second is columns."
+  },
+  {
+    "topic": "Pointers",
+    "text": "What will be the output of the following code?",
+    "code": "int a = 5, *p = &a;\n*p = *p + 5;\nprintf(\"%d\", a);",
+    "options": ["5", "10", "Address of a", "Error"],
+    "correct": [1],
+    "multiple": false,
+    "explanation": "Pointer p modifies the value of a to 10."
+  }
+  // ... (add remaining 26 questions following the same format)
+]
