@@ -1,47 +1,332 @@
 [
   {
     "topic": "Functions",
-    "text": "What is the output of the following code?",
+    "text": "What will be the output of the following code?",
     "code": "void show(){ printf(\"Hello\"); }\nint main(){ show(); return 0; }",
     "options": ["Hello", "Error", "Nothing", "Garbage"],
     "correct": [0],
     "multiple": false,
-    "explanation": "Function show() prints Hello when called from main."
+    "explanation": "The function show() prints 'Hello' when called from main."
   },
   {
     "topic": "Functions",
-    "text": "Which of the following statements about functions in C is true?",
+    "text": "Which statement about functions in C is true?",
     "options": [
       "A function must always return a value.",
-      "Functions cannot be called recursively.",
-      "Functions help in modular programming and code reuse.",
-      "Functions cannot have parameters."
-    ],
-    "correct": [2],
-    "multiple": false,
-    "explanation": "Functions are used to organize code and improve reusability."
-  },
-  {
-    "topic": "Arrays",
-    "text": "What is the correct way to declare a 2D array with 3 rows and 4 columns?",
-    "options": [
-      "int arr[4][3];",
-      "int arr[3][4];",
-      "int arr(3,4);",
-      "array arr[3,4];"
+      "Functions can call themselves (recursion).",
+      "Functions cannot have arguments.",
+      "Functions cannot return multiple values."
     ],
     "correct": [1],
     "multiple": false,
-    "explanation": "In C, first index is rows, second is columns."
+    "explanation": "Functions can call themselves, a concept known as recursion."
+  },
+  {
+    "topic": "Functions",
+    "text": "What is the default return type of a function in C if not specified?",
+    "options": ["int", "void", "float", "undefined"],
+    "correct": [0],
+    "multiple": false,
+    "explanation": "In older C standards, the default return type was int if unspecified."
+  },
+  {
+    "topic": "Functions",
+    "text": "What happens when a function is called before its declaration?",
+    "options": [
+      "Compiler error",
+      "Implicit declaration is assumed",
+      "Linker error",
+      "Program crashes"
+    ],
+    "correct": [1],
+    "multiple": false,
+    "explanation": "If a prototype isn't provided, the compiler assumes an implicit declaration."
+  },
+  {
+    "topic": "Functions",
+    "text": "Which of the following is a valid function declaration?",
+    "options": [
+      "int sum(a, b);",
+      "int sum(int, int);",
+      "sum(int a, int b);",
+      "int sum = (int a, int b);"
+    ],
+    "correct": [1],
+    "multiple": false,
+    "explanation": "The correct syntax is 'int sum(int, int);' for a function declaration."
+  },
+  {
+    "topic": "Functions",
+    "text": "Which statement is true about pass-by-value in C?",
+    "options": [
+      "Changes made inside the function reflect in the caller automatically.",
+      "Only the address is passed to the function.",
+      "A copy of the value is passed; original remains unchanged.",
+      "It does not work with integers."
+    ],
+    "correct": [2],
+    "multiple": false,
+    "explanation": "Pass-by-value passes a copy of the argument, so the original is unchanged."
+  },
+  {
+    "topic": "Functions",
+    "text": "What is a pointer to a function?",
+    "options": [
+      "A variable storing the address of a function.",
+      "A special keyword for calling functions.",
+      "A reference to main().",
+      "A return type of a recursive function."
+    ],
+    "correct": [0],
+    "multiple": false,
+    "explanation": "A function pointer holds the memory address of a function."
+  },
+  {
+    "topic": "Functions",
+    "text": "How many values can a C function return directly?",
+    "options": ["1", "2", "Unlimited", "Depends on compiler"],
+    "correct": [0],
+    "multiple": false,
+    "explanation": "A C function can return only one value directly."
+  },
+  {
+    "topic": "Functions",
+    "text": "What will be printed by the following code?",
+    "code": "int add(int a, int b){ return a + b; }\nint main(){ printf(\"%d\", add(3,4)); }",
+    "options": ["7", "34", "Error", "Undefined"],
+    "correct": [0],
+    "multiple": false,
+    "explanation": "add(3,4) returns 7 which is printed."
+  },
+  {
+    "topic": "Functions",
+    "text": "Which keyword is used to return a value from a function?",
+    "options": ["break", "continue", "return", "exit"],
+    "correct": [2],
+    "multiple": false,
+    "explanation": "The 'return' keyword exits a function and optionally passes a value back."
+  },
+  {
+    "topic": "Arrays",
+    "text": "Which index is the first element of an array stored at in C?",
+    "options": ["0", "1", "Depends on compiler", "-1"],
+    "correct": [0],
+    "multiple": false,
+    "explanation": "Array indexing in C starts at 0."
+  },
+  {
+    "topic": "Arrays",
+    "text": "How do you declare an array of 10 integers?",
+    "options": [
+      "int arr[10];",
+      "int arr = 10;",
+      "arr[10] int;",
+      "array arr(10);"
+    ],
+    "correct": [0],
+    "multiple": false,
+    "explanation": "The correct declaration syntax is 'int arr[10];'."
+  },
+  {
+    "topic": "Arrays",
+    "text": "What will the following code print?",
+    "code": "int arr[5] = {1,2,3,4,5};\nprintf(\"%d\", arr[2]);",
+    "options": ["1", "2", "3", "4"],
+    "correct": [2],
+    "multiple": false,
+    "explanation": "arr[2] represents the third element which is 3."
+  },
+  {
+    "topic": "Arrays",
+    "text": "What happens if you access arr[10] in an array declared as int arr[5];?",
+    "options": [
+      "Compiler error",
+      "Runtime error",
+      "Undefined behavior",
+      "Prints 0"
+    ],
+    "correct": [2],
+    "multiple": false,
+    "explanation": "Accessing beyond the array bounds is undefined behavior in C."
+  },
+  {
+    "topic": "Arrays",
+    "text": "What is the size (in bytes) of int arr[10]; assuming int = 4 bytes?",
+    "options": ["10", "40", "20", "4"],
+    "correct": [1],
+    "multiple": false,
+    "explanation": "10 integers × 4 bytes = 40 bytes."
+  },
+  {
+    "topic": "Arrays",
+    "text": "Which of the following correctly initializes all elements of an array to zero?",
+    "options": [
+      "int arr[5] = {};",
+      "int arr[5] = {0};",
+      "int arr[5];",
+      "int arr = {0,0,0,0,0};"
+    ],
+    "correct": [1],
+    "multiple": false,
+    "explanation": "Using {0} initializes all array elements to zero."
+  },
+  {
+    "topic": "Arrays",
+    "text": "How are arrays stored in memory?",
+    "options": [
+      "Randomly",
+      "Contiguously",
+      "In reverse order",
+      "Depends on OS"
+    ],
+    "correct": [1],
+    "multiple": false,
+    "explanation": "Arrays occupy contiguous blocks of memory."
+  },
+  {
+    "topic": "Arrays",
+    "text": "Which of the following correctly passes an array to a function?",
+    "options": [
+      "func(arr);",
+      "func(&arr);",
+      "func(*arr);",
+      "func(array);"
+    ],
+    "correct": [0],
+    "multiple": false,
+    "explanation": "Arrays are passed by reference; the name 'arr' decays to pointer."
+  },
+  {
+    "topic": "Arrays",
+    "text": "Which function is commonly used to determine the length of a string?",
+    "options": ["strlen()", "sizeof()", "length()", "count()"],
+    "correct": [0],
+    "multiple": false,
+    "explanation": "strlen() returns the number of characters before the null terminator."
+  },
+  {
+    "topic": "Arrays",
+    "text": "What is the terminating character in C strings?",
+    "options": ["\\0", "\\n", "space", "null"],
+    "correct": [0],
+    "multiple": false,
+    "explanation": "C strings are null-terminated using '\\0'."
+  },
+  {
+    "topic": "Pointers",
+    "text": "What does the '&' operator do in C?",
+    "options": [
+      "Performs bitwise AND",
+      "Returns address of a variable",
+      "Dereferences a pointer",
+      "Performs addition"
+    ],
+    "correct": [1],
+    "multiple": false,
+    "explanation": "The '&' operator gives the memory address of a variable."
+  },
+  {
+    "topic": "Pointers",
+    "text": "What does the '*' operator do in C?",
+    "options": [
+      "Returns address",
+      "Multiplies two numbers",
+      "Dereferences a pointer",
+      "Declares a variable"
+    ],
+    "correct": [2],
+    "multiple": false,
+    "explanation": "The '*' operator dereferences a pointer to access the value."
+  },
+  {
+    "topic": "Pointers",
+    "text": "Which of these correctly declares a pointer to an integer?",
+    "options": [
+      "int p;",
+      "int *p;",
+      "pointer p int;",
+      "int &p;"
+    ],
+    "correct": [1],
+    "multiple": false,
+    "explanation": "int *p declares a pointer to an integer."
+  },
+  {
+    "topic": "Pointers",
+    "text": "What will be printed by the following code?",
+    "code": "int a = 10; int *p = &a;\nprintf(\"%d\", *p);",
+    "options": ["10", "Address of a", "Garbage", "0"],
+    "correct": [0],
+    "multiple": false,
+    "explanation": "Dereferencing p with *p gives the value stored in a (10)."
   },
   {
     "topic": "Pointers",
     "text": "What will be the output of the following code?",
-    "code": "int a = 5, *p = &a;\n*p = *p + 5;\nprintf(\"%d\", a);",
-    "options": ["5", "10", "Address of a", "Error"],
-    "correct": [1],
+    "code": "int a=5,b=6; int *p=&a,*q=&b; q=p; *q=10;\nprintf(\"%d %d\",a,b);",
+    "options": ["10 6", "5 10", "10 10", "Error"],
+    "correct": [0],
     "multiple": false,
-    "explanation": "Pointer p modifies the value of a to 10."
+    "explanation": "Both pointers point to a; modifying *q changes a to 10."
+  },
+  {
+    "topic": "Pointers",
+    "text": "What happens when you increment a pointer (p++)?",
+    "options": [
+      "Pointer moves to next memory location of same data type",
+      "Pointer moves by 1 byte",
+      "Pointer value becomes undefined",
+      "Pointer resets to NULL"
+    ],
+    "correct": [0],
+    "multiple": false,
+    "explanation": "Incrementing a pointer moves it by the size of its base type."
+  },
+  {
+    "topic": "Pointers",
+    "text": "What is the difference between *p++ and (*p)++?",
+    "options": [
+      "*p++ increments the pointer; (*p)++ increments the value pointed to.",
+      "Both increment the same thing.",
+      "*p++ increments both pointer and value.",
+      "(*p)++ increments pointer first then value."
+    ],
+    "correct": [0],
+    "multiple": false,
+    "explanation": "*p++ increments the pointer; (*p)++ increments the value."
+  },
+  {
+    "topic": "Pointers",
+    "text": "What is a NULL pointer?",
+    "options": [
+      "A pointer pointing to address 0",
+      "A pointer pointing to random memory",
+      "An uninitialized pointer",
+      "A function pointer"
+    ],
+    "correct": [0],
+    "multiple": false,
+    "explanation": "A NULL pointer points to address 0 and doesn't reference valid memory."
+  },
+  {
+    "topic": "Pointers",
+    "text": "What is the size of a pointer variable in C (on a 64-bit system)?",
+    "options": ["2 bytes", "4 bytes", "8 bytes", "Depends on compiler"],
+    "correct": [2],
+    "multiple": false,
+    "explanation": "Pointers are typically 8 bytes on 64-bit systems."
+  },
+  {
+    "topic": "Pointers",
+    "text": "Which statement about pointers and arrays is true?",
+    "options": [
+      "Array name acts as a pointer to the first element.",
+      "Pointers and arrays are unrelated.",
+      "Array name holds entire array in one variable.",
+      "Pointer arithmetic is invalid for arrays."
+    ],
+    "correct": [0],
+    "multiple": false,
+    "explanation": "Array names decay to a pointer to their first element in expressions."
   }
-  // ... (add remaining 26 questions following the same format)
 ]
